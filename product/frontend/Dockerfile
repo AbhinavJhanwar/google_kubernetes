@@ -16,7 +16,7 @@ COPY requirements.txt ${appDir}
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8501
+# EXPOSE 8501
 
 CMD ["streamlit", "run", "user_interface.py"]
 
