@@ -1,0 +1,24 @@
+# optional- specify version of docker tool
+version: "1"
+
+# create services to run- backend and frontend
+services:
+ # backend service
+ fruit-service:
+   # build the dockerfile in backend
+   build: ./backend
+   # provide container name
+   container_name: fastapi
+   # expose port to access
+   ports:
+     - 80:80
+
+ # frontend service
+ website:
+   image: php:apache
+   volumes:
+     - ./website:/var/www/html
+   ports:
+     - 5000:80
+   depends_on:
+     - fruit-service
