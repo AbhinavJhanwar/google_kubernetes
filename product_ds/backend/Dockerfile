@@ -1,7 +1,7 @@
 FROM python:3.8
 # FROM python:3-slim-buster
 LABEL owner="Abhinav Jhanwar"
-LABEL description="This example creates sample Dockerfile for backend."
+LABEL description="This example creates Dockerfile for backend."
 
 # define working directory and create the directory in the container
 ENV appDir /app
@@ -11,8 +11,8 @@ RUN mkdir -p $appDir
 WORKDIR ${appDir}
 
 # Copy the current directory contents into the container at /app
-COPY api.py ${appDir}
-COPY requirements.txt ${appDir}
+COPY . ${appDir}
+# COPY requirements.txt ${appDir}
 
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
