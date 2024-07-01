@@ -1,0 +1,32 @@
+# specify version of docker tool
+version: "3"
+
+# create services/docker containers
+services:
+  # backend service
+  backend:
+    # provide image name >> <imageName>:<tag>
+    image: fastapi-backend:v1
+    # path of docker file
+    build: backend/
+    # provide container name
+    container_name: fastapi
+    # expose port to access
+    ports:
+      - 8000:8000
+    # define any environment variables required
+    environment:
+      - name=value
+
+  # frontend service
+  frontend:
+    image: streamlit-frontend:v1
+    # frontend docker file location
+    build: frontend/
+    # provide container name
+    container_name: streamlit
+    # expose port to access
+    ports:
+      - 8501:8501
+    depends_on:
+      - backend
